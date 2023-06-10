@@ -88,7 +88,7 @@ fn poly_pack(poly: Vec<u8>) -> Vec<u32> {
 
 impl BchCode {
     fn new_n_12(n: usize) -> Self {
-        let poly = poly_mult(
+        let mut poly = poly_mult(
             &[1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             &[1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
         )
@@ -103,6 +103,9 @@ impl BchCode {
         .mult(&[1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1])
         .mult(&[1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1]);
 
+        poly.pop();
+        assert_eq!(poly.len(), NUM_PARITY_N12);
+
         let poly = poly_pack(poly);
         assert_eq!(poly.len(), POLY_SIZE_N12);
 
@@ -114,7 +117,7 @@ impl BchCode {
     }
 
     fn new_n_10(n: usize) -> Self {
-        let poly = poly_mult(
+        let mut poly = poly_mult(
             &[1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             &[1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
         )
@@ -127,6 +130,9 @@ impl BchCode {
         .mult(&[1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1])
         .mult(&[1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1]);
 
+        poly.pop();
+        assert_eq!(poly.len(), NUM_PARITY_N10);
+
         let poly = poly_pack(poly);
         assert_eq!(poly.len(), POLY_SIZE_N10);
 
@@ -138,7 +144,7 @@ impl BchCode {
     }
 
     fn new_n_8(n: usize) -> Self {
-        let poly = poly_mult(
+        let mut poly = poly_mult(
             &[1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             &[1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
         )
@@ -148,6 +154,9 @@ impl BchCode {
         .mult(&[1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1])
         .mult(&[1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1])
         .mult(&[1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1]);
+
+        poly.pop();
+        assert_eq!(poly.len(), NUM_PARITY_N8);
 
         let poly = poly_pack(poly);
         assert_eq!(poly.len(), POLY_SIZE_N8);
@@ -160,7 +169,7 @@ impl BchCode {
     }
 
     fn new_s_12(n: usize) -> Self {
-        let poly = poly_mult(
+        let mut poly = poly_mult(
             &[1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             &[1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1],
         )
@@ -175,6 +184,9 @@ impl BchCode {
         .mult(&[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1])
         .mult(&[1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1]);
 
+        poly.pop();
+        assert_eq!(poly.len(), NUM_PARITY_S12);
+
         let poly = poly_pack(poly);
         assert_eq!(poly.len(), POLY_SIZE_S12);
 
@@ -186,7 +198,7 @@ impl BchCode {
     }
 
     fn new_m_12(n: usize) -> Self {
-        let poly = poly_mult(
+        let mut poly = poly_mult(
             &[1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             &[1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1],
         )
@@ -200,6 +212,9 @@ impl BchCode {
         .mult(&[1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1])
         .mult(&[1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1])
         .mult(&[1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1]);
+
+        poly.pop();
+        assert_eq!(poly.len(), NUM_PARITY_M12);
 
         let poly = poly_pack(poly);
         assert_eq!(poly.len(), POLY_SIZE_M12);

@@ -10,7 +10,7 @@ fn main() -> Result<()> {
     let mut fg = Flowgraph::new();
 
     let framesize = dvb::config::Framesize::Normal;
-    let rate = dvb::config::CodeRate::C1_4;
+    let rate = dvb::config::CodeRate::C8_9;
     let constellation = dvb::config::Constellation::ModQpsk;
 
     let src = random_src::RandomByteSource::new();
@@ -20,7 +20,7 @@ fn main() -> Result<()> {
             bits[i] = (b >> i) & 1;
         }
     });
-    let head = Head::<u8>::new(16008);
+    let head = Head::<u8>::new(57600 - 128);
     let bch = dvb::BchEncoder::new(framesize, rate).unwrap();
     let snk = ConsoleSink::<u8>::new("");
 
