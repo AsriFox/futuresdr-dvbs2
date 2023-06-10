@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'futuresdr-dvbs2'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=futuresdr-dvbs2",
+                    "--package=futuresdr-dvbs2"
+                ],
+                "filter": {
+                    "name": "futuresdr-dvbs2",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'futuresdr-dvbs2'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=futuresdr-dvbs2",
+                    "--package=futuresdr-dvbs2"
+                ],
+                "filter": {
+                    "name": "futuresdr-dvbs2",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
